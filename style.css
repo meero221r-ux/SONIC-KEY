@@ -1,0 +1,116 @@
+body {
+    background-color: #323437;
+    color: #d1d0c5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    width: 80%;
+    max-width: 900px;
+}
+
+h1 { color: #e2b714; margin-bottom: 30px; }
+
+.text-area {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.letter {
+    display: inline-block;
+    position: relative;
+    color: #646669;
+    white-space: pre; /* حل مشكلة المسافات */
+    min-width: 0.3em;
+}
+
+.letter.correct { color: #d1d0c5; }
+.letter.incorrect { color: #ca4754; }
+
+.translation-area {
+    color: #646669;
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    direction: rtl;
+}
+
+#user-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0; /* مخفي للكتابة السرية */
+    pointer-events: none;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background-color: #e2b714;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+}
+/* المؤشر (Caret) */
+.letter.current {
+    border-left: 3px solid #e2b714; /* الخط الأصفر الواقف */
+    margin-left: -1px; /*  عشان مايتحرك النص*/
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: #e2b714; }
+}
+
+/* تحسين شكل الجملة */
+.text-area {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+}
+
+/* تعريف حركة التلاشي */
+@keyframes fadeInMove {
+    from {
+        opacity: 0;
+        transform: translateY(10px); /* تبدأ من أسفل قليلاً */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* تنتهي في مكانها الطبيعي */
+    }
+}
+
+/* تطبيق الحركة على منطقة النص والترجمة */
+.text-area, .translation-area {
+    animation: fadeInMove 0.6s ease-out;
+}
+
+.level-box button {
+    margin: 10px;
+    padding: 20px;
+    width: 150px;
+    font-size: 1.2rem;
+    background: #2c2e31;
+    color: #e2b714;
+    border: 2px solid #e2b714;
+    transition: 0.3s;
+}
+
+.level-box button:hover {
+    background: #e2b714;
+    color: #323437;
+}
+
+.controls { margin: 20px 0; font-size: 0.9rem; color: #646669; }
+
+.stat { color: #e2b714; font-size: 1.5rem; }
